@@ -25,7 +25,7 @@ jobs:
               run: cmake -S . -B $BUILD_DIRECTORY
 
             - name: Build
-              run: cmake --build $BUILBUILD_DIRECTORY
+              run: cmake --build $BUILD_DIRECTORY
 
             - name: Run Tests
               run: ctest --test-dir $BUILD_DIRECTORY --output-on-failure
