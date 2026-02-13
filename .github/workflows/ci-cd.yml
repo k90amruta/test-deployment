@@ -22,18 +22,18 @@ jobs:
                     sudo apt install -y cmake g++ make
 
             - name: configure cmake
-              run: cmake -S . -B $BUILD_DIR
+              run: cmake -S . -B $BUILD_DIRECTORY
 
             - name: Build
-              run: cmake --build $BUILD_DIR
+              run: cmake --build $BUILBUILD_DIRECTORY
 
             - name: Run Tests
-              run: ctest --test-dir $BUILD_DIR --output-on-failure
+              run: ctest --test-dir $BUILD_DIRECTORY --output-on-failure
 
             - name: Package Binary
               run: |
                  mkdir release
-                 cp $BUILD_DIR/$APP_NAME release/
+                 cp $BUILD_DIRECTORY/$APP_NAME release/
                  tar -czf $APP_NAME.tar.gz -C release .
 
 
