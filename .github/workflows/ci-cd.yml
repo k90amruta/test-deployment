@@ -11,3 +11,34 @@ jobs:
         env:
             BUILD_DIRECTORY: build
             APP_NAME: myapp
+
+        steps:
+            - name: Check out
+              uses: actions/checkout@v4
+
+            - name: install amrutas dependancies  
+              run: |
+                    sudo apt update
+                    sudo apt install -y cmake g++ make
+
+            - name: configure cmake
+              run: cmake -S . -B $BUILD_DIR
+
+            - name: Build
+              run: cmake --build $BUILD_DIR
+
+            - name: Run Tests
+              run: ctest --test-dir $BUILD_DIR --output-on-failure
+
+            - name: Package Binary
+              run: |
+                 mkdir release
+                 cp $BUILD_DIR/$APP_NAME release/
+                 tar -czf $APP_NAME.tar.gz -C release .
+
+
+
+
+              
+              
+             
