@@ -1,0 +1,13 @@
+name: cpp ci/cd pipeline
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build-test-deployment:
+        runs-on: ubuntu-latest
+
+        env:
+            BUILD_DIRECTORY: build
+            APP_NAME: myapp
